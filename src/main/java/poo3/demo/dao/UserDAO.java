@@ -5,6 +5,7 @@ import poo3.demo.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class UserDAO {
@@ -22,7 +23,7 @@ public class UserDAO {
         return users;
     }
 
-    public User getUserByUsername(String username){
+    public User getUserByUsername(String username) throws NoSuchElementException {
         return this.getUsers().stream()
                 .filter((User user) -> {
                     return user.getUsername().equals(username);
