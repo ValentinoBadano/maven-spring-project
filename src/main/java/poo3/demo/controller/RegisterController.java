@@ -10,10 +10,10 @@ import poo3.demo.model.User;
 import poo3.demo.service.UserServiceImp;
 
 @Controller
-public class UserController {
+public class RegisterController {
 
     @Autowired
-    private UserServiceImp userService; // Debes tener un servicio para gestionar la autenticación
+    private UserServiceImp userService; // para la creación de usuarios
 
     @GetMapping("/register")
     public String registrationForm(Model model) {
@@ -23,8 +23,9 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("user") User user) {
-        // Validar y guardar el usuario en la base de datos
+        // guardar el usuario en la base de datos
         userService.create(user);
+
         return "redirect:/login";
     }
 
