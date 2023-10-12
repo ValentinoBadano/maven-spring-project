@@ -3,7 +3,6 @@ package poo3.demo.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.security.config.Customizer.withDefaults;
 
 
 @Configuration
@@ -30,12 +28,18 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // @formatter:off
         http
+                .userDetailsService(userService)
                 .authorizeHttpRequests((authorize) -> authorize
-                        .anyRequest().authenticated()
+                        .requestMatchers("/login", "/register").permitAll()
+                        .requestMatchers("/index").authenticated()
                 )
-                .httpBasic(withDefaults())
-                .formLogin(withDefaults());
-        // @formatter:on
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .permitAll()
+                        .and()
+                )
+                .logout(logout -> logout
+                        .permitAll());
         return http.build();
     }
 
