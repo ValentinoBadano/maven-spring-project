@@ -28,6 +28,11 @@ public class UserServiceImp implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userDAO.getUserByUsername(username);
+
+        User user = userDAO.getUserByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("Usuario no encontrado");
+        }
+        return user;
     }
 }
