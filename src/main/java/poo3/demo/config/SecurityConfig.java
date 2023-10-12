@@ -35,6 +35,7 @@ public class SecurityConfig {
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
+                        .defaultSuccessUrl("/index") // dirección predeterminada al iniciar sesión
                         .permitAll()
                         .and()
                 )
@@ -43,6 +44,7 @@ public class SecurityConfig {
         return http.build();
     }
 
+    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
