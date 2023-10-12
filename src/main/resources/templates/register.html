@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es-ES">
 <head>
-    <meta charset="UTF-8">
-    <title>Registro</title>
+  <meta charset="UTF-8">
+  <title>Registro</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
-  <h1>Registre un nuevo usuario</h1>
-
-  <form th:action="@{/register}" method="post">
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required>
+<body class="bg-light">
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title text-center">Registre un nuevo usuario</h3>
+          <form th:action="@{/register}" method="post" class="mt-4">
+            <div class="form-group">
+              <label for="username">Nombre de usuario:</label>
+              <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Contraseña:</label>
+              <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Registrarse</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
-    </div>
-    <div>
-      <button type="submit">Register</button>
-    </div>
-  </form>
-
-
-
+  </div>
+</div>
 </body>
 </html>
