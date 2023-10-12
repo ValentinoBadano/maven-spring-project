@@ -1,6 +1,5 @@
 package poo3.demo.dao;
 
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import poo3.demo.model.User;
 
@@ -23,7 +22,7 @@ public class UserDAO {
         return users;
     }
 
-    public User getUserByUsername(String username) throws UsernameNotFoundException {
+    public User getUserByUsername(String username){
         return this.getUsers().stream()
                 .filter((User user) -> {
                     return user.getUsername().equals(username);
