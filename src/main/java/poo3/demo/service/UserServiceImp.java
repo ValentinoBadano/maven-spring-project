@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import poo3.demo.dao.UserDAO;
 import poo3.demo.model.User;
 
+import java.util.NoSuchElementException;
+
 @Service
 public class UserServiceImp implements UserService {
 
@@ -28,11 +30,15 @@ public class UserServiceImp implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        User user = userDAO.getUserByUsername(username);
-        if (user == null) {
+        User user;
+        // user details que provee el user-service
+        try {
+            user = userDAO.getUserByUsername(username);
+        } catch (NoSuchElementException e) {
+            System.out.println("** Usuario "+username+" no encontrado");
             throw new UsernameNotFoundException("Usuario no encontrado");
         }
         return user;
     }
+
 }
