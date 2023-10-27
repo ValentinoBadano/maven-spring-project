@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 
 
 @Configuration
@@ -26,7 +26,9 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // @formatter:off
+        // Soluciona un bug que redirige a /?continue
+        HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
+        requestCache.setMatchingRequestParameterName(null);
         http
                 .userDetailsService(userService)
                 .authorizeHttpRequests((authorize) -> authorize
@@ -38,6 +40,9 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/index") // dirección predeterminada al iniciar sesión
                         .permitAll()
                         .and()
+                )
+                .requestCache((cache) -> cache
+                        .requestCache(requestCache)
                 )
                 .logout(logout -> logout
                         .permitAll());
