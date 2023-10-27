@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import poo3.demo.dao.UserDAO;
 import poo3.demo.model.User;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -41,4 +42,7 @@ public class UserServiceImp implements UserService {
         return user;
     }
 
+    public List<User> getUsers() {
+        return this.userDAO.getUsers();
+    }
 }
