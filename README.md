@@ -16,4 +16,15 @@ Esta página tendrá un formulario que permite completar los datos para el regis
 nuevo usuario al sistema. Todos los campos de este formulario son requeridos y
 obligatorios. No se podrá crear un nuevo usuario si alguno de estos campos es omitido.
 
+# Estado actual
+## Pantalla de inicio de sesión
+
 ![imagen](https://github.com/ValentinoBadano/maven-spring-project/assets/45541334/8661c11b-e4f9-4467-9633-a491567fa0f2)
+
+## Pantalla de registro
+
+![imagen](https://github.com/ValentinoBadano/maven-spring-project/assets/45541334/9b17995d-d13f-445d-bd7a-7b158142b2bd)
+
+## Pantalla principal
+
+![imagen](https://github.com/ValentinoBadano/maven-spring-project/assets/45541334/19138b4f-472e-4d80-ab08-8297f08bfdcf)
