@@ -13,10 +13,27 @@
         <div class="card-body">
           <h3 class="card-title text-center">Registre un nuevo usuario</h3>
           <form th:action="@{/register}" method="post" class="mt-4">
+
             <div class="form-group">
               <label for="username">Nombre de usuario:</label>
               <input type="text" class="form-control" id="username" name="username" required>
             </div>
+
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="text" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="name">Nombre:</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="last_name">Apellido:</label>
+              <input type="text" class="form-control" id="last_name" name="last_name" required>
+            </div>
+
             <div class="form-group">
               <label for="password">Contraseña:</label>
               <input type="password" class="form-control" id="password" name="password" required>
