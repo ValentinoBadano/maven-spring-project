@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-ES">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Bienvenido</title>
@@ -17,13 +17,28 @@
       </div>
     </div>
   </div>
-  <ul class="list-group">
-    <!-- TODO implementar lista de usuarios -->
-    <li class="list-group-item">Usuario 1</li>
-    <li class="list-group-item">Usuario 2</li>
-    <li class="list-group-item">Usuario 3</li>
 
-  </ul>
+
+    <h1>Tabla de Usuarios</h1>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th>Nombre de Usuario</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="user : ${users}" >
+        <td th:text="${user.getUsername()}"></td>
+        <td th:text="${user.getName()}"></td>
+        <td th:text="${user.getLast_name()}"></td>
+        <td th:text="${user.getEmail()}"></td>
+      </tr>
+      </tbody>
+    </table>
+
 </div>
 </body>
 </html>
